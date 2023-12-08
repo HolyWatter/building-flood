@@ -1,0 +1,32 @@
+.safety-container {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+
+  .safety-table {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+
+    border: 1px solid var(--gray300);
+    border-radius: 12px;
+    overflow: clip;
+
+    .safety-title {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 50px;
+      padding: 8px;
+      border-bottom: 1px solid var(--gray300);
+      background-color: var(--gray50);
+      text-align: center;
+    }
+
+    .safety-info {
+      text-align: center;
+      height: 40px;
+      padding: 8px;
+    }
+  }
+}

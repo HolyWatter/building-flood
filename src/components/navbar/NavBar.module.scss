@@ -1,0 +1,20 @@
+.nav-container {
+  background-color: #fff;
+  display: flex;
+
+  .nav-button-container {
+    display: flex;
+    gap: 8px;
+    padding: 8px;
+
+    .button {
+      display: flex;
+      align-items: center;
+      padding: 8px;
+    }
+
+    .selected {
+      color: #36f;
+    }
+  }
+}

@@ -1,0 +1,25 @@
+.detail-container {
+  border: 1px solid var(--gray300);
+  border-radius: 12px;
+  overflow: cl;
+
+  .detail-row {
+    display: flex;
+
+    .detail-title {
+      display: flex;
+      align-items: center;
+      width: 96px;
+      padding: 16px 12px;
+      background-color: var(--gray50);
+    }
+    .detail-info {
+      padding: 16px 12px;
+    }
+    .detail-info-flood {
+      padding: 16px 12px;
+      display: flex;
+      flex-direction: column;
+    }
+  }
+}

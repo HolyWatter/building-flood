@@ -1,0 +1,11 @@
+.info-container {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  .address-container {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+}

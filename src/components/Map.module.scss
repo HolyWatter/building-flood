@@ -1,4 +1,17 @@
 .map {
+  position: fixed;
+  right: 0;
   width: 100%;
   height: 100vh;
+  z-index: -999;
+
+  .research-btn {
+    position: fixed;
+    bottom: 50px;
+    left: 50%;
+
+    background-color: #000;
+    width: 100%;
+    z-index: 10000;
+  }
 }

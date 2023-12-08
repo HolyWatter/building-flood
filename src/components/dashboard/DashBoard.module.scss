@@ -1,0 +1,30 @@
+.dashboard-container {
+  display: flex;
+  flex-direction: column;
+
+  gap: 20px;
+
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 32px 0;
+
+  .row {
+    width: 100%;
+    display: flex;
+    gap: 24px;
+  }
+
+  .graph-container {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px;
+
+    .reference-container {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+  }
+}

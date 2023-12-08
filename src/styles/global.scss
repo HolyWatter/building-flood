@@ -1,10 +1,82 @@
 @charset "utf-8";
 
 @import url('./reset.scss');
+@import url('./fonts.scss');
+
+// @font-face {
+//   font-family: 'Pretendard-Regular';
+//   src: url('../assets//fonts//PretendardVariable.woff2') format('woff2');
+// }
 
 :root {
-  --red: #ea7664;
-  --black: #544f4f;
-  --brown: #89757a;
-  --beige: #f6f5f5;
+  --point1: #fc4b54;
+  --point2: #fc4b54;
+  --point3: #e755ff;
+
+  --blue1: #2441b7;
+  --blue2: #3366ff;
+  --blue300: #539aff;
+  --blue4: #b6c8ff;
+  --blue100: #f5f7ff;
+
+  --gray900: #121212;
+  --gray800: #343e4c;
+  --gray700: #8c95a1;
+  --gray500: #c7c7c7;
+  --gray300: #eeeeee;
+  --gray50: #f9fafb;
+  --gray0: #fdfdfd;
+
+  --shadow: 2px 3px 6px 3px rgba(230, 230, 230, 0.16),
+    2px 3px 16px 1px rgba(221, 221, 221, 0.08),
+    1px 4px 8px 2px rgba(51, 51, 51, 0.08);
+}
+
+.--point1 {
+  color: var(--point1);
+}
+.--point2 {
+  color: var(--point2);
+}
+.--point3 {
+  color: var(--point3);
+}
+
+.--blue1 {
+  color: var(--blue1);
+}
+.--blue2 {
+  color: var(--blue2);
+}
+.--blue3 {
+  color: var(--blue3);
+}
+.--blue4 {
+  color: var(--blue4);
+}
+.--gray900 {
+  color: var(--gray900);
+}
+.--gray800 {
+  color: var(--gray800);
+}
+.--gray700 {
+  color: var(--gray700);
+}
+.--gray500 {
+  color: var(--gray500);
+}
+.--gray300 {
+  color: var(--gray300);
+}
+.--gray50 {
+  color: var(--gray50);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--gray50);
 }
