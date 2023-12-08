@@ -1,6 +1,11 @@
 .nav-container {
-  background-color: #fff;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: hsl(0, 0%, 100%);
   display: flex;
+  max-width: 100%;
 
   .nav-button-container {
     display: flex;
