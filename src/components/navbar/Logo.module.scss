@@ -3,3 +3,11 @@
   padding: 20px;
   width: 320px;
 }
+
+@media (max-width: 500px) {
+  .logo-container {
+    background-color: white;
+    padding: 20px;
+    width: 130px;
+  }
+}

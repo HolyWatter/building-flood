@@ -9,3 +9,21 @@
   text-align: start;
   border-bottom: 1px solid var(--gray300);
 }
+
+@media (max-width: 500px) {
+  .notice-table th {
+    padding: 5px;
+    text-align: start;
+    border-bottom: 1px solid var(--gray300);
+
+    span {
+      font-size: 16px;
+    }
+  }
+
+  .notice-table td {
+    padding: 5px;
+    text-align: start;
+    border-bottom: 1px solid var(--gray300);
+  }
+}

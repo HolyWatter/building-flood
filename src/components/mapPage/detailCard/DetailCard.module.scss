@@ -10,7 +10,18 @@
   width: 320px;
   padding: 16px 20px;
 
-  border-radius: 12px;
+  border-radius: 12px 0 12px 12px;
   background-color: #fff;
   z-index: 999;
+
+  .close-btn {
+    position: absolute;
+    top: 0;
+    right: -32px;
+    padding: 12px 4px;
+
+    border-radius: 0 12px 12px 0;
+
+    background: var(--White, #fff);
+  }
 }
