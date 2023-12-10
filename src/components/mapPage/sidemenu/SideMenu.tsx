@@ -1,19 +1,23 @@
+import { Building, DongInfo } from '@/models/building'
 import classNames from 'classnames/bind'
 import CardContainer from './CardContainer'
-import DetailCard from '../detailCard'
 import LocationInfo from './LocationInfo'
 import SearchingBar from './SearchingBar'
 import styles from './SideMenu.module.scss'
 
 const cx = classNames.bind(styles)
 
-function SideMenu() {
+interface Props {
+  submitCode: (code: DongInfo, title: string) => void
+  buildings?: Building[]
+}
+
+function SideMenu({ submitCode, buildings }: Props) {
   return (
     <div className={cx('side-bg')}>
       <SearchingBar />
-      <LocationInfo />
-      <CardContainer />
-      {/* <DetailCard /> */}
+      <LocationInfo submitCode={submitCode} />
+      <CardContainer buildings={buildings} />
     </div>
   )
 }

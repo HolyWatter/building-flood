@@ -1,0 +1,28 @@
+.location-select {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 8px 16px;
+  border-radius: 8px;
+  border: 1px solid var(--gray500);
+}
+
+.select-list {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  left: -23px;
+  gap: 24px;
+
+  width: 320px;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 16px;
+
+  .select {
+    display: flex;
+    gap: 5px;
+    // align-items: center;
+  }
+}

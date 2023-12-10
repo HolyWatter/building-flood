@@ -1,0 +1,37 @@
+.location-change-container {
+  position: fixed;
+  top: 120px;
+  left: 340px;
+  width: 320px;
+
+  .location-change-header {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .select-container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+}
+
+@media (max-width: 500px) {
+  .dimmed-mobile {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(18, 18, 18, 0.5);
+    z-index: 999;
+
+    .location-change-container {
+      position: absolute;
+      top: 30%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+  }
+}

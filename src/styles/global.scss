@@ -13,10 +13,10 @@
   --point2: #fc4b54;
   --point3: #e755ff;
 
-  --blue1: #2441b7;
-  --blue2: #3366ff;
+  --blue1900: #2441b7;
+  --blue500: #3366ff;
   --blue300: #539aff;
-  --blue4: #b6c8ff;
+  --blue200: #b6c8ff;
   --blue100: #f5f7ff;
 
   --gray900: #121212;
@@ -27,6 +27,7 @@
   --gray50: #f9fafb;
   --gray0: #fdfdfd;
 
+  --wthie: #fff;
   --shadow: 2px 3px 6px 3px rgba(230, 230, 230, 0.16),
     2px 3px 16px 1px rgba(221, 221, 221, 0.08),
     1px 4px 8px 2px rgba(51, 51, 51, 0.08);
@@ -79,4 +80,9 @@
 
 body {
   background-color: var(--gray50);
+
+  .marker {
+    z-index: 999;
+    background-color: #000;
+  }
 }

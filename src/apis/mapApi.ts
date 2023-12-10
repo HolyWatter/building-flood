@@ -1,4 +1,4 @@
-import { BuildingQuery } from '@/models/building'
+import { BuildingQuery, BuildingRes } from '@/models/building'
 import api from './axios'
 
 const mapApi = {
@@ -10,8 +10,7 @@ const mapApi = {
         params: queryValues,
       },
     )
-
-    return res.data
+    return res.data.data as BuildingRes
   },
 }
 

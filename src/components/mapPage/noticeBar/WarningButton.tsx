@@ -1,5 +1,4 @@
 import Text from '@/components/shared/Text'
-import IconCaution from '@/components/svgs/IconCaution'
 import classNames from 'classnames/bind'
 import { ButtonHTMLAttributes } from 'react'
 import styles from './WarningButton.module.scss'

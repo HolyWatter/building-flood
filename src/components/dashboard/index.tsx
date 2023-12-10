@@ -1,8 +1,7 @@
 import classNames from 'classnames/bind'
 import Text from '../shared/Text'
 import styles from './DashBoard.module.scss'
-import GraphContainer from './graph/GraphContainer'
-import imgGraph from '@assets/images/graphImg.png'
+import OldBuildingGraph from './graph/OldBuildingGraph'
 import Notice from './notice'
 
 const cx = classNames.bind(styles)
@@ -17,7 +16,7 @@ function DashBoard() {
         <Text>현위치</Text>
         <Text>서울 특별시 서초구 서초동</Text>
       </div>
-      <div className={cx('row')}>
+      {/* <div className={cx('row')}>
         <GraphContainer
           title="단계별 건물분포"
           subTitle={
@@ -63,6 +62,9 @@ function DashBoard() {
           }
           graph={<></>}
         />
+      </div> */}
+      <div className={cx('row')}>
+        <OldBuildingGraph />
       </div>
       <Notice />
     </div>

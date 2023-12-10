@@ -1,18 +1,14 @@
 import { cardDetailAtom } from '@/atoms/cardDetailAtom'
-import Map from '@/components/Map'
-import DetailCard from '@/components/mapPage/detailCard'
-import NoticeBar from '@/components/mapPage/noticeBar'
-import SideMenu from '@/components/mapPage/sidemenu/SideMenu'
+import KaKaoMap from '@/components/mapPage/KaKaoMap'
 import { useRecoilValue } from 'recoil'
 
 function MapPage() {
-  const { isOpen } = useRecoilValue(cardDetailAtom)
+  const { isOpen, component } = useRecoilValue(cardDetailAtom)
+
   return (
     <>
-      <SideMenu />
-      <NoticeBar />
-      <Map />
-      {isOpen && <DetailCard />}
+      <KaKaoMap />
+      {isOpen && component}
     </>
   )
 }

@@ -1,10 +1,11 @@
 .detail-container {
   border: 1px solid var(--gray300);
   border-radius: 12px;
-  overflow: cl;
+  overflow: clip;
 
   .detail-row {
     display: flex;
+    border-bottom: 1px solid var(--Grey-300, #eee);
 
     .detail-title {
       display: flex;

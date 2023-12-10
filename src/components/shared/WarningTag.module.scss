@@ -1,9 +1,10 @@
 .tag-container {
   display: flex;
-  justify-content: flex-start;
+  justify-content: space-between;
   align-items: center;
   gap: 4px;
-  padding: 8px 4px;
+  width: 110px;
+  padding: 6px 6px;
   background-color: var(--gray300);
   border-radius: 8px;
 }
