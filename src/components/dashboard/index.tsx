@@ -1,7 +1,11 @@
 import classNames from 'classnames/bind'
 import Text from '../shared/Text'
 import styles from './DashBoard.module.scss'
+import BuildingFlood from './graph/BuildingFlood'
+import BuildingStep from './graph/BuildingStep'
+import GraphContainer from './graph/GraphContainer'
 import OldBuildingGraph from './graph/OldBuildingGraph'
+import PreventionFacility from './graph/PreventionFacility'
 import Notice from './notice'
 
 const cx = classNames.bind(styles)
@@ -14,55 +18,13 @@ function DashBoard() {
       </Text>
       <div>
         <Text>현위치</Text>
-        <Text>서울 특별시 서초구 서초동</Text>
+        <Text>서울 특별시 서초구</Text>
       </div>
-      {/* <div className={cx('row')}>
-        <GraphContainer
-          title="단계별 건물분포"
-          subTitle={
-            <Text typo="t3" classNames="--gray700">
-              N개건물
-            </Text>
-          }
-          graph={
-            <div className={cx('graph-container')}>
-              <div className={cx('reference-container')}>
-                <div>
-                  <Text>62%</Text>
-                  <Text>침수관리</Text>
-                </div>
-                <div>
-                  <Text>23%</Text>
-                  <Text>침수관리</Text>
-                </div>
-                <div>
-                  <Text>13%</Text>
-                  <Text>침수관리</Text>
-                </div>
-              </div>
-              <img src={imgGraph} />
-            </div>
-          }
-        />
-        <GraphContainer
-          title="단계별 건물분포"
-          subTitle={
-            <Text typo="t3" classNames="--gray700">
-              N개건물
-            </Text>
-          }
-          graph={<></>}
-        />
-        <GraphContainer
-          title="단계별 건물분포"
-          subTitle={
-            <Text typo="t3" classNames="--gray700">
-              N개건물
-            </Text>
-          }
-          graph={<></>}
-        />
-      </div> */}
+      <div className={cx('row')}>
+        <BuildingStep />
+        <BuildingFlood />
+        <PreventionFacility />
+      </div>
       <div className={cx('row')}>
         <OldBuildingGraph />
       </div>

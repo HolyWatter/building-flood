@@ -2,6 +2,7 @@
 
 @import url('./reset.scss');
 @import url('./fonts.scss');
+@import url('./mapPin.scss');
 
 // @font-face {
 //   font-family: 'Pretendard-Regular';
@@ -27,7 +28,10 @@
   --gray50: #f9fafb;
   --gray0: #fdfdfd;
 
+  --dimmed: rgba(18, 18, 18, 0.5);
+
   --wthie: #fff;
+
   --shadow: 2px 3px 6px 3px rgba(230, 230, 230, 0.16),
     2px 3px 16px 1px rgba(221, 221, 221, 0.08),
     1px 4px 8px 2px rgba(51, 51, 51, 0.08);
@@ -36,9 +40,11 @@
 .--point1 {
   color: var(--point1);
 }
+
 .--point2 {
   color: var(--point2);
 }
+
 .--point3 {
   color: var(--point3);
 }
@@ -46,30 +52,38 @@
 .--blue1 {
   color: var(--blue1);
 }
+
 .--blue2 {
   color: var(--blue2);
 }
+
 .--blue3 {
   color: var(--blue3);
 }
+
 .--blue4 {
   color: var(--blue4);
 }
+
 .--gray900 {
   color: var(--gray900);
 }
+
 .--gray800 {
   color: var(--gray800);
 }
+
 .--gray700 {
   color: var(--gray700);
 }
+
 .--gray500 {
   color: var(--gray500);
 }
 .--gray300 {
   color: var(--gray300);
 }
+
 .--gray50 {
   color: var(--gray50);
 }

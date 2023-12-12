@@ -1,6 +1,5 @@
 import classNames from 'classnames/bind'
 import { useCallback, useRef } from 'react'
-
 import { searchLocationAtom } from '@/atoms/searchLocationAtom'
 import { KAKAO_MAP_LEVEL } from '@/const/mapLevel'
 import useBuildings from '@/hooks/useBuilings'
@@ -10,6 +9,9 @@ import { useRecoilState } from 'recoil'
 import styles from './KaKaoMap.module.scss'
 import NoticeBar from './noticeBar'
 import SideMenu from './sidemenu/SideMenu'
+import warning from '@assets/images/warning.png'
+import caution from '@assets/images/caution.png'
+import safety from '@assets/images/safety.png'
 
 declare global {
   interface Window {
@@ -63,12 +65,14 @@ function KaKaoMap() {
     },
     [setBuildinQuery],
   )
-
+  console.log(1)
   return (
     <>
       <div ref={mapContainer} className={cx('map')}></div>
       <SideMenu submitCode={submitCode} buildings={buildings} />
       <NoticeBar notification={data?.notification} />
+      <img src={warning} />
+      {/* <MapPin pinImg={<IconCaution />} buildingName="빌딩이름" score="5" /> */}
     </>
   )
 }

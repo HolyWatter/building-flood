@@ -13,7 +13,7 @@ function GraphContainer({ title, subTitle, graph }: Props) {
       <Text typo="t1" classNames="--gray900">
         {title}
       </Text>
-      {subTitle}
+      <Text typo="t6">{subTitle}</Text>
       {graph}
     </WhiteBox>
   )

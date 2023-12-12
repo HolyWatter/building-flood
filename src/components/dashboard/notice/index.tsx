@@ -1,10 +1,15 @@
 import WhiteBox from '@shared/WhiteBox'
 import Text from '@shared/Text'
 import NoticeTable from './NoticeTable'
+import Prepare from '@/components/shared/Prepare'
+import styles from './Notice.module.scss'
+import classNames from 'classnames/bind'
+
+const cx = classNames.bind(styles)
 
 function Notice() {
   return (
-    <WhiteBox>
+    <WhiteBox className={cx('container')}>
       <Text typo="t1">최근 점검일</Text>
       <NoticeTable>
         <NoticeTable.TableHead
@@ -18,6 +23,7 @@ function Notice() {
           <NoticeTable.TableItem />
         </tbody>
       </NoticeTable>
+      <Prepare />
     </WhiteBox>
   )
 }

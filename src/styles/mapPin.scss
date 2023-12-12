@@ -1,0 +1,57 @@
+.pin-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  width: 130px;
+  height: 48px;
+  padding: 0 16px 0 8px;
+  border-radius: 80px;
+
+  background-color: #fff;
+
+  .icon-container {
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f5f7ff;
+    border-radius: 80px;
+  }
+
+  .building-name {
+    font-size: 14px;
+    font-family: 'Predendard600';
+    color: var(--gray800);
+    line-height: 140%;
+  }
+  .score-text {
+    font-size: 10px;
+    font-family: 'Predendard600';
+    color: var(--gray700);
+    line-height: 140%;
+  }
+
+  .pin-text-container {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .pin-bottom {
+    position: absolute;
+    left: 50%;
+    bottom: -7px;
+
+    transform: translateX(-50%);
+  }
+}
+
+.select {
+  background-color: #3366ff;
+  & * {
+    color: #fff !important;
+    fill: #3366ff;
+  }
+}
