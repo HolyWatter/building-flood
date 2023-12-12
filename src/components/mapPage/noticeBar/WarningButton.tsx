@@ -11,9 +11,14 @@ interface Props extends ButtonHTMLAttributes<HTMLButtonElement> {
   isSelected?: boolean
 }
 
-function WarningButton({ isSelected = false, icon, children }: Props) {
+function WarningButton({
+  isSelected = false,
+  icon,
+  children,
+  ...props
+}: Props) {
   return (
-    <button className={cx('warning-btn', isSelected && 'selected')}>
+    <button className={cx('warning-btn', isSelected && 'selected')} {...props}>
       {icon}
       <Text typo="t4" classNames={isSelected ? '--blue2' : '--gray900'}>
         {children}

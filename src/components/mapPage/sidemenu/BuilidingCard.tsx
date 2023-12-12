@@ -6,6 +6,8 @@ import styles from './BuilidingCard.module.scss'
 import DetailCard from '../detailCard'
 import useModal from '@/hooks/useModal'
 import { Building } from '@/models/building'
+import { useSetRecoilState } from 'recoil'
+import { selectedBuildingAtom } from '@/atoms/selectedBuilding'
 
 const cx = classNames.bind(styles)
 
@@ -14,14 +16,17 @@ interface Props {
 }
 
 function BuildingCard({ building }: Props) {
+  const setSelectedBuilding = useSetRecoilState(selectedBuildingAtom)
   const { openModal } = useModal()
 
   const { buildingName, address, safety } = building
+
+  const handleOpenDetailCard = () => {
+    openModal(<DetailCard />)
+    setSelectedBuilding(building)
+  }
   return (
-    <div
-      className={cx('card-container')}
-      onClick={() => openModal(<DetailCard building={building} />)}
-    >
+    <div className={cx('card-container')} onClick={handleOpenDetailCard}>
       <Text typo="t1">{buildingName}</Text>
       <Text>{address}</Text>
       <div className={cx('card-tag-container')}>

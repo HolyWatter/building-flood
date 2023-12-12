@@ -4,15 +4,25 @@ import { useEffect } from 'react'
 import warning from '@assets/images/warning.png'
 import caution from '@assets/images/caution.png'
 import safety from '@assets/images/safety.png'
+import { useRecoilState } from 'recoil'
+import { selectedBuildingAtom } from '@/atoms/selectedBuilding'
+import useModal from './useModal'
+import DetailCard from '@/components/mapPage/detailCard'
 
 interface Props {
   mapContainer: React.MutableRefObject<null | HTMLDivElement>
   center: [number, number]
   buildings?: Building[]
+  clickPin: (building: Building) => void
 }
 
-function useMaps({ mapContainer, center, buildings = [] }: Props) {
+function useMaps({ mapContainer, center, buildings = [], clickPin }: Props) {
+  const { openModal } = useModal()
+  const [selectedBuilding, setSelectedBuilding] =
+    useRecoilState(selectedBuildingAtom)
+
   useEffect(() => {
+    console.log('map reRendered')
     const script = document.createElement('script')
     script.src = `https://dapi.kakao.com/v2/maps/sdk.js?appkey=${process.env.REACT_APP_KAKAO_APP_KEY}&autoload=false`
     script.async = true
@@ -32,17 +42,16 @@ function useMaps({ mapContainer, center, buildings = [] }: Props) {
           firstOptions,
         )
 
-        for (let building of buildings2) {
+        for (let building of buildings) {
+          const isSelect = building.pk === selectedBuilding?.pk
           const imgsrc =
             IMG_INDEX[building.safety.status as keyof typeof IMG_INDEX]
-          const content = `<div class='pin-container select'>
-          <div class='icon-container'>
-            <img src=${imgsrc} />
-          </div>
-          <div class='pin-text-container'>
-            <p class='building-name'>${building.buildingName}</p>
-            <p class='score-text'>침수 위험점수 ${building.safety.score}점</p>
-          </div>
+          const content = `<div class='pin-container ${
+            isSelect ? 'selected' : ''
+          }' onclick='${clickPin(building)}'>
+              <div class='icon-container'>
+                <img src=${imgsrc} />
+              </div>
           <svg
           class="pin-bottom"
           xmlns="http://www.w3.org/2000/svg"
@@ -58,7 +67,7 @@ function useMaps({ mapContainer, center, buildings = [] }: Props) {
         </svg>
         </div>`
 
-          const a = new window.kakao.maps.CustomOverlay({
+          new window.kakao.maps.CustomOverlay({
             map: map,
             position: new window.kakao.maps.LatLng(
               building.latitude,
@@ -71,9 +80,7 @@ function useMaps({ mapContainer, center, buildings = [] }: Props) {
         }
       })
     }
-  }, [buildings, center, mapContainer])
-
-  console.log(1)
+  }, [buildings, selectedBuilding])
 }
 
 export default useMaps
@@ -83,51 +90,3 @@ const IMG_INDEX = {
   침수주의: caution,
   침수관리: safety,
 }
-
-const buildings2 = [
-  {
-    safety: {
-      status: '침수경고',
-      score: '5',
-    },
-    latitude: '37.498064',
-    longitude: '127.030716',
-    buildingName: '빌딩이름1',
-  },
-  {
-    latitude: '37.499103',
-    longitude: '127.029956',
-    buildingName: '빌딩이름2',
-    safety: {
-      status: '침수주의',
-      score: '5',
-    },
-  },
-  {
-    latitude: '37.498159',
-    longitude: '127.025966',
-    buildingName: '빌딩이름3',
-    safety: {
-      status: '침수관리',
-      score: '5',
-    },
-  },
-  {
-    latitude: '37.496342',
-    longitude: '127.025926',
-    buildingName: '빌딩이름4',
-    safety: {
-      status: '침수경고',
-      score: '5',
-    },
-  },
-  {
-    latitude: '37.496953',
-    longitude: '127.025866',
-    buildingName: '빌딩이름5',
-    safety: {
-      status: '침수경고',
-      score: '5',
-    },
-  },
-]

@@ -4,7 +4,7 @@ import { searchLocationAtom } from '@/atoms/searchLocationAtom'
 import { KAKAO_MAP_LEVEL } from '@/const/mapLevel'
 import useBuildings from '@/hooks/useBuilings'
 import useMaps from '@/hooks/useMaps'
-import { DongInfo } from '@/models/building'
+import { Building, DongInfo } from '@/models/building'
 import { useRecoilState } from 'recoil'
 import styles from './KaKaoMap.module.scss'
 import NoticeBar from './noticeBar'
@@ -12,6 +12,9 @@ import SideMenu from './sidemenu/SideMenu'
 import warning from '@assets/images/warning.png'
 import caution from '@assets/images/caution.png'
 import safety from '@assets/images/safety.png'
+import useModal from '@/hooks/useModal'
+import { selectedBuildingAtom } from '@/atoms/selectedBuilding'
+import DetailCard from './detailCard'
 
 declare global {
   interface Window {
@@ -23,7 +26,9 @@ const cx = classNames.bind(styles)
 
 function KaKaoMap() {
   const mapContainer = useRef(null)
-
+  const { openModal } = useModal()
+  const [selectedBuilding, setSelectedBuilding] =
+    useRecoilState(selectedBuildingAtom)
   const [buildingQuery, setBuildinQuery] = useRecoilState(searchLocationAtom)
 
   const { data } = useBuildings({
@@ -39,7 +44,16 @@ function KaKaoMap() {
 
   const buildings = data?.buildings
 
-  useMaps({ mapContainer, center: buildingQuery.center, buildings })
+  const clickPin = (building: Building) => {
+    function closer() {
+      setSelectedBuilding(building)
+      openModal(<DetailCard />)
+    }
+
+    return closer
+  }
+
+  useMaps({ mapContainer, center: buildingQuery.center, buildings, clickPin })
 
   const submitCode = useCallback(
     (code: DongInfo, title: string) => {

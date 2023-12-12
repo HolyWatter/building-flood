@@ -3,10 +3,8 @@
   display: flex;
   align-items: center;
   gap: 8px;
-
-  width: 130px;
   height: 48px;
-  padding: 0 16px 0 8px;
+  padding: 8px;
   border-radius: 80px;
 
   background-color: #fff;
@@ -19,19 +17,6 @@
     justify-content: center;
     background-color: #f5f7ff;
     border-radius: 80px;
-  }
-
-  .building-name {
-    font-size: 14px;
-    font-family: 'Predendard600';
-    color: var(--gray800);
-    line-height: 140%;
-  }
-  .score-text {
-    font-size: 10px;
-    font-family: 'Predendard600';
-    color: var(--gray700);
-    line-height: 140%;
   }
 
   .pin-text-container {
@@ -48,8 +33,10 @@
   }
 }
 
-.select {
+.selected {
   background-color: #3366ff;
+  z-index: 999999999999;
+
   & * {
     color: #fff !important;
     fill: #3366ff;

@@ -1,18 +1,18 @@
+import { selectedBuildingAtom } from '@/atoms/selectedBuilding'
 import IconClose from '@/components/svgs/IconClose'
 import useModal from '@/hooks/useModal'
 import { Building } from '@/models/building'
 import classNames from 'classnames/bind'
+import { useRecoilState, useRecoilValue } from 'recoil'
 import DefaultInfo from './DefaultInfo'
 import styles from './DetailCard.module.scss'
 import DetailInfo from './DetailInfo'
 
 const cx = classNames.bind(styles)
 
-interface Props {
-  building: Building
-}
+function DetailCard() {
+  const [building, setSelectedBuilding] = useRecoilState(selectedBuildingAtom)
 
-function DetailCard({ building }: Props) {
   const {
     buildingName,
     address,
@@ -21,11 +21,16 @@ function DetailCard({ building }: Props) {
     usage,
     floodHistoryYears,
     inspection,
-  } = building
+  } = building as Building
   const { closeModal } = useModal()
+
+  const handleCloseCard = () => {
+    closeModal()
+    setSelectedBuilding(null)
+  }
   return (
     <div className={cx('card-container')}>
-      <button className={cx('close-btn')} onClick={closeModal}>
+      <button className={cx('close-btn')} onClick={handleCloseCard}>
         <IconClose />
       </button>
       <DefaultInfo name={buildingName} address={address} safety={safety} />
