@@ -27,16 +27,10 @@ export interface Building {
   belowFloorNum: number
   aboveFloorNum: number
   safety: {
-    status: string
+    status: '침수경고' | '침수관리' | '침수주의'
     score: number
   }
   floodHistoryYears: number[]
-  // inspection: {
-  //   inspectDate: string
-  //   waterBarrier: string
-  //   backflowPreventionFacility: string
-  //   submersiblePump: string
-  // }
   latitude: number
   longitude: number
   inspection: { facilities: string[]; yn: string }

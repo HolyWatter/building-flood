@@ -10,8 +10,6 @@ import styles from './KaKaoMap.module.scss'
 import NoticeBar from './noticeBar'
 import SideMenu from './sidemenu/SideMenu'
 import warning from '@assets/images/warning.png'
-import caution from '@assets/images/caution.png'
-import safety from '@assets/images/safety.png'
 import useModal from '@/hooks/useModal'
 import { selectedBuildingAtom } from '@/atoms/selectedBuilding'
 import DetailCard from './detailCard'
@@ -45,12 +43,11 @@ function KaKaoMap() {
   const buildings = data?.buildings
 
   const clickPin = (building: Building) => {
-    function closer() {
-      setSelectedBuilding(building)
-      openModal(<DetailCard />)
-    }
+    setSelectedBuilding(building)
+    openModal(<DetailCard />)
+    // return function closure() {
 
-    return closer
+    // }
   }
 
   useMaps({ mapContainer, center: buildingQuery.center, buildings, clickPin })
@@ -79,14 +76,12 @@ function KaKaoMap() {
     },
     [setBuildinQuery],
   )
-  console.log(1)
   return (
     <>
       <div ref={mapContainer} className={cx('map')}></div>
       <SideMenu submitCode={submitCode} buildings={buildings} />
       <NoticeBar notification={data?.notification} />
       <img src={warning} />
-      {/* <MapPin pinImg={<IconCaution />} buildingName="빌딩이름" score="5" /> */}
     </>
   )
 }

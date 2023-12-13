@@ -1,1 +1,1 @@
-export const KAKAO_MAP_LEVEL = 4
+export const KAKAO_MAP_LEVEL = 3

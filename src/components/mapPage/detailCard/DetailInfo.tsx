@@ -60,7 +60,9 @@ function DetailInfo({ usage, year, floodHistoryYears, inspection }: Props) {
             </Text>
           )}
           {inspection.facilities.map((facility) => (
-            <Text typo="t6">{facility}</Text>
+            <Text key={facility} typo="t6">
+              {facility}
+            </Text>
           ))}
         </div>
       </div>

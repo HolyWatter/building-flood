@@ -1,13 +1,15 @@
+import { selectedBuildingAtom } from '@/atoms/selectedBuilding'
 import { KAKAO_MAP_LEVEL } from '@/const/mapLevel'
 import { Building } from '@/models/building'
-import { useEffect } from 'react'
-import warning from '@assets/images/warning.png'
-import caution from '@assets/images/caution.png'
-import safety from '@assets/images/safety.png'
-import { useRecoilState } from 'recoil'
-import { selectedBuildingAtom } from '@/atoms/selectedBuilding'
-import useModal from './useModal'
-import DetailCard from '@/components/mapPage/detailCard'
+import caution from '@assets/images/defaultCaution.png'
+import safety from '@assets/images/defaultManage.png'
+import warning from '@assets/images/defaultWarning.png'
+import { useEffect, useState } from 'react'
+import { useRecoilValue } from 'recoil'
+
+import selectedWarning from '@assets/images/selectedWarning.png'
+import selectedCaution from '@assets/images/selectedCaution.png'
+import selectedManage from '@assets/images/selectedManage.png'
 
 interface Props {
   mapContainer: React.MutableRefObject<null | HTMLDivElement>
@@ -17,12 +19,9 @@ interface Props {
 }
 
 function useMaps({ mapContainer, center, buildings = [], clickPin }: Props) {
-  const { openModal } = useModal()
-  const [selectedBuilding, setSelectedBuilding] =
-    useRecoilState(selectedBuildingAtom)
-
+  let selectedMarker: any = null
+  const selectedBuilding = useRecoilValue(selectedBuildingAtom)
   useEffect(() => {
-    console.log('map reRendered')
     const script = document.createElement('script')
     script.src = `https://dapi.kakao.com/v2/maps/sdk.js?appkey=${process.env.REACT_APP_KAKAO_APP_KEY}&autoload=false`
     script.async = true
@@ -44,43 +43,58 @@ function useMaps({ mapContainer, center, buildings = [], clickPin }: Props) {
 
         for (let building of buildings) {
           const isSelect = building.pk === selectedBuilding?.pk
-          const imgsrc =
-            IMG_INDEX[building.safety.status as keyof typeof IMG_INDEX]
-          const content = `<div class='pin-container ${
-            isSelect ? 'selected' : ''
-          }' onclick='${clickPin(building)}'>
-              <div class='icon-container'>
-                <img src=${imgsrc} />
-              </div>
-          <svg
-          class="pin-bottom"
-          xmlns="http://www.w3.org/2000/svg"
-          width="13"
-          height="11"
-          viewBox="0 0 13 11"
-          fill="none"
-        >
-          <path
-            d="M7.36603 10.5C6.98112 11.1667 6.01888 11.1667 5.63397 10.5L0.437822 1.5C0.0529223 0.833333 0.534048 6.86406e-07 1.30385 7.53704e-07L11.6962 1.66223e-06C12.466 1.72953e-06 12.9471 0.833335 12.5622 1.5L7.36603 10.5Z"
-            fill="white"
-          />
-        </svg>
-        </div>`
+          const imgsrc = isSelect
+            ? IMG_INDEX_SELECT[building.safety.status]
+            : IMG_INDEX[building.safety.status]
 
-          new window.kakao.maps.CustomOverlay({
+          const marker = new window.kakao.maps.Marker({
             map: map,
             position: new window.kakao.maps.LatLng(
               building.latitude,
               building.longitude,
             ),
-            content: content,
-            xAnchor: 0.3,
-            yAnchor: 0.91,
+            image: new window.kakao.maps.MarkerImage(
+              imgsrc,
+              new window.kakao.maps.Size(48, 64),
+              {
+                offset: new window.kakao.maps.Point(24, 64),
+              },
+            ),
+          })
+
+          window.kakao.maps.event.addListener(marker, 'click', function () {
+            clickPin(building)
+
+            if (!selectedMarker || selectedMarker !== marker) {
+              !!selectedMarker &&
+                selectedMarker.setImage(
+                  new window.kakao.maps.MarkerImage(
+                    imgsrc,
+                    new window.kakao.maps.Size(48, 64),
+                    {
+                      offset: new window.kakao.maps.Point(24, 64),
+                    },
+                  ),
+                )
+            }
+
+            marker.setImage(
+              new window.kakao.maps.MarkerImage(
+                IMG_INDEX_SELECT[building.safety.status],
+                new window.kakao.maps.Size(48, 64),
+                {
+                  offset: new window.kakao.maps.Point(24, 64),
+                },
+              ),
+            )
+
+            selectedMarker = marker
           })
         }
       })
     }
-  }, [buildings, selectedBuilding])
+  }, [buildings])
+  console.log(selectedMarker)
 }
 
 export default useMaps
@@ -89,4 +103,9 @@ const IMG_INDEX = {
   침수경고: warning,
   침수주의: caution,
   침수관리: safety,
+}
+const IMG_INDEX_SELECT = {
+  침수경고: selectedWarning,
+  침수주의: selectedCaution,
+  침수관리: selectedManage,
 }
