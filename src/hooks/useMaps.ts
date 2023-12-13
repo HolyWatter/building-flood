@@ -94,7 +94,6 @@ function useMaps({ mapContainer, center, buildings = [], clickPin }: Props) {
       })
     }
   }, [buildings])
-  console.log(selectedMarker)
 }
 
 export default useMaps

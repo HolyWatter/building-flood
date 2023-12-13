@@ -45,9 +45,6 @@ function KaKaoMap() {
   const clickPin = (building: Building) => {
     setSelectedBuilding(building)
     openModal(<DetailCard />)
-    // return function closure() {
-
-    // }
   }
 
   useMaps({ mapContainer, center: buildingQuery.center, buildings, clickPin })

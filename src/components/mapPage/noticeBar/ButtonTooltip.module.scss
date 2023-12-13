@@ -1,0 +1,11 @@
+.tooltip-container {
+  position: fixed;
+  top: 120px;
+  left: 330px;
+  width: 320px;
+  padding: 8px 16px;
+  border-radius: 8px;
+  background-color: #fff;
+  box-shadow: var(--shadow);
+  z-index: 9999;
+}

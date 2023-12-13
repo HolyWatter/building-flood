@@ -8,8 +8,9 @@ function SearchingBar() {
     <div className={cx('searching-container')}>
       <div className={cx('input-container')}>
         <input
+          disabled
           className={cx('searching-input')}
-          placeholder="ex) 위치, 건물명"
+          placeholder="준비 중입니다."
         />
         <IconSearching className={cx('searching-icon')} />
       </div>

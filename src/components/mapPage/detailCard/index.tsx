@@ -29,17 +29,19 @@ function DetailCard() {
     setSelectedBuilding(null)
   }
   return (
-    <div className={cx('card-container')}>
-      <button className={cx('close-btn')} onClick={handleCloseCard}>
-        <IconClose />
-      </button>
-      <DefaultInfo name={buildingName} address={address} safety={safety} />
-      <DetailInfo
-        year={year}
-        usage={usage}
-        floodHistoryYears={floodHistoryYears}
-        inspection={inspection}
-      />
+    <div className={cx('mobile-dimmed')}>
+      <div className={cx('card-container')}>
+        <button className={cx('close-btn')} onClick={handleCloseCard}>
+          <IconClose />
+        </button>
+        <DefaultInfo name={buildingName} address={address} safety={safety} />
+        <DetailInfo
+          year={year}
+          usage={usage}
+          floodHistoryYears={floodHistoryYears}
+          inspection={inspection}
+        />
+      </div>
     </div>
   )
 }

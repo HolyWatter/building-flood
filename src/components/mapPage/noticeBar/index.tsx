@@ -4,8 +4,10 @@ import IconCaution from '@/components/svgs/IconCaution'
 import IconChecked2 from '@/components/svgs/IconChecked2'
 import IconShield from '@/components/svgs/IconManage'
 import IconNotification from '@/components/svgs/IconNotification'
+import useTooltip from '@/hooks/useTooltip'
 import classNames from 'classnames/bind'
 import { useRecoilState } from 'recoil'
+import ButtonTooltip from './ButtonTooltip'
 import styles from './NoticeBar.module.scss'
 
 import WarningButton from './WarningButton'
@@ -17,6 +19,7 @@ interface Props {
 }
 
 function NoticeBar({ notification }: Props) {
+  const { isMouseHover, enterMouse, leaveMouse } = useTooltip()
   const [filterValue, setFilterValue] = useRecoilState(filterValueAtom)
   const clickFilterBtn = (value: '침수경고' | '침수주의' | '침수관리') => {
     if (filterValue === value) {
@@ -28,7 +31,11 @@ function NoticeBar({ notification }: Props) {
 
   return (
     <div className={cx('notice-bar')}>
-      <div className={cx('button-container')}>
+      <div
+        className={cx('button-container')}
+        onMouseEnter={enterMouse}
+        onMouseLeave={leaveMouse}
+      >
         <WarningButton
           onClick={() => clickFilterBtn('침수경고')}
           isSelected={filterValue === '침수경고'}
@@ -57,6 +64,7 @@ function NoticeBar({ notification }: Props) {
           {notification}
         </Text>
       </div>
+      {isMouseHover && <ButtonTooltip />}
     </div>
   )
 }
