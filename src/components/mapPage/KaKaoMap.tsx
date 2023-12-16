@@ -45,6 +45,10 @@ function KaKaoMap() {
   const clickPin = (building: Building) => {
     setSelectedBuilding(building)
     openModal(<DetailCard />)
+    setBuildinQuery((prevValues) => ({
+      ...prevValues,
+      center: [building.latitude, building.longitude],
+    }))
   }
 
   useMaps({ mapContainer, center: buildingQuery.center, buildings, clickPin })
@@ -73,6 +77,7 @@ function KaKaoMap() {
     },
     [setBuildinQuery],
   )
+
   return (
     <>
       <div ref={mapContainer} className={cx('map')}></div>

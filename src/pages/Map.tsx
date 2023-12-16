@@ -4,7 +4,6 @@ import { useRecoilValue } from 'recoil'
 
 function MapPage() {
   const { isOpen, component } = useRecoilValue(cardDetailAtom)
-  console.log(1)
   return (
     <>
       <KaKaoMap />

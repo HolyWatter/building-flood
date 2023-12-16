@@ -93,7 +93,7 @@ function useMaps({ mapContainer, center, buildings = [], clickPin }: Props) {
         }
       })
     }
-  }, [buildings])
+  }, [buildings, selectedBuilding])
 }
 
 export default useMaps
